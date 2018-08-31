@@ -1,10 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from "@angular/core";
 
-import { AppComponent } from './app.component';
+import {AppComponent} from "./app.component";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MainComponent} from "./layout/main/main.component";
+import {SharedModule} from "./shared/shared.module";
+import {RoutesModule} from "./routes/routes.module";
+import {PublicModule} from "./public/public.module";
 // 为AOT准备
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -12,10 +15,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent
   ],
   imports: [
-    BrowserModule,
+    RoutesModule,
+    SharedModule.forRoot(),
+    PublicModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -28,4 +34,5 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
