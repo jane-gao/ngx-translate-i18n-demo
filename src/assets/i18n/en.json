@@ -1,0 +1,8 @@
+{
+  "welcome":"welcome to this app",
+  "hello":"Hola",
+  "home": {
+    "title": "homePage",
+    "content": "there is something"
+  }
+}
